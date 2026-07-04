@@ -8,7 +8,7 @@ Integrantes de Grupo:
   
   Ledesma Gustavo Alberto
   
-  Galeano Alan Joel.
+  Galeano Alan Joel
   
 
 Comision: C(K1.3)
