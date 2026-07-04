@@ -2,10 +2,14 @@
 
 Integrantes de Grupo:
 
-  Fabro Lourdes
-  Cordoba Mayra
-  Ledesma Gustavo Alberto
-  Galeano Alan Joel
+  Fabro Lourdes,
+  
+  Cordoba Mayra,
+  
+  Ledesma Gustavo Alberto,
+  
+  Galeano Alan Joel.
+  
 
 Comision: C(K1.3)
 
