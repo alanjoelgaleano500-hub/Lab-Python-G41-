@@ -2,11 +2,11 @@
 
 Integrantes de Grupo:
 
-  Fabro Lourdes,
+  Fabro Lourdes
   
-  Cordoba Mayra,
+  Cordoba Mayra
   
-  Ledesma Gustavo Alberto,
+  Ledesma Gustavo Alberto
   
   Galeano Alan Joel.
   
