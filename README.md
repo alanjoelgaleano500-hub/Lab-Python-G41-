@@ -14,7 +14,6 @@ Integrantes de Grupo:
 Comision: C(K1.3)
 
 
-Descripción general del sistema:  
-
+Descripción general del sistema:  Este sistema simula una caja de supermercado, permitiendo registrar productos, agregarlos a un carrito de compras, calcular el costo total de cada venta y generar estadísticas, como el producto más vendido.
 
 Instrucciones de ejecución:  
