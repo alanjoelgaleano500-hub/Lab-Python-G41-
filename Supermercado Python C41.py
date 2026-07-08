@@ -17,10 +17,11 @@ def buscar(codigo):
     return None
 
 
-def validar():
+def validar(verificar=False):
     while True:
         codigo = input("Ingrese el codigo: ")
-        print("\n")
+        print()
+
         if len(codigo) != 3 or not codigo.isdigit():
             print("El codigo debe tener exactamente 3 digitos\n")
             continue
@@ -31,25 +32,14 @@ def validar():
             print("El codigo debe estar entre 001 y 100\n")
             continue
 
-        if buscar(codigo) is not None:
-            print("Ese codigo ya existe\n")
-            continue
-
-        return codigo
-
-
-def pedir_codigo():
-    while True:
-        codigo = input("Ingrese el codigo: ")
-        print("\n")
-        if len(codigo) != 3 or not codigo.isdigit():
-            print("El codigo debe tener exactamente 3 digitos\n")
-            continue
-
-        numero = int(codigo)
-        if numero < 1 or numero > 100:
-            print("El codigo debe estar entre 001 y 100\n")
-            continue
+        if verificar:
+            if buscar(codigo) is None:
+                print("Ese codigo o producto no existe\n")
+                continue
+        else:
+            if buscar(codigo) is not None:
+                print("Ese codigo ya existe\n")
+                continue
 
         return codigo
 
@@ -59,11 +49,11 @@ def reg_precio():
         try:
             precio = float(input("Precio: "))
             if precio <= 0:
-                print("El Precio es invalido")
+                print("\nEl Precio es invalido\n")
             else:
                 return precio
         except ValueError:
-            print("Debe ingresar un numero no caracteres")
+            print("\nDebe ingresar un numero entero\n")
 
 
 def reg_stock():
@@ -71,16 +61,16 @@ def reg_stock():
         try:
             stock = int(input("Stock: "))
             if stock < 0:
-                print("El stock es invalido.")
+                print("\nEl stock es invalido\n")
             else:
                 return stock
         except ValueError:
-            print("Debe ingresar un numero entero")
+            print("\nDebe ingresar un numero entero\n")
 
 
 def registrar():
     if len(productos) >= 100:
-        print("No se pueden registrar mas productos")
+        print("No se pueden registrar mas productos\n")
         return
 
     print("\n------------- REGISTRAR PRODUCTO -------------")
@@ -133,25 +123,22 @@ def cantidad_en_carrito(codigo):
 
 
 def agre_carri():
-    codigo = pedir_codigo()
+    codigo = validar(True)
     produc_encontrado = buscar(codigo)
-    if produc_encontrado is None:
-        print("El Producto no existe\n")
-        return
 
     while True:
         try:
             cantidad = int(input("Ingrese la cantidad: "))
         except ValueError:
-            print("Debe ingresar un numero entero\n")
+            print("\nDebe ingresar un numero entero\n")
             continue
 
         if cantidad <= 0:
-            print("Debe elegir por lo menos una unidad\n")
+            print("\nDebe elegir por lo menos una unidad\n")
             continue
 
         if cantidad + cantidad_en_carrito(codigo) > produc_encontrado["stock"]:
-            print("No hay stock suficiente")
+            print("No hay stock suficiente\n")
             break
 
         nuevo_item = {
@@ -176,7 +163,7 @@ def calcu_total():
 def mostra_carri():
     while True:
         if not carrito:
-            print("Su carrito esta vacio")
+            print("Su carrito esta vacio\n")
             return None
 
         print("----------------------------------------")
@@ -194,7 +181,7 @@ def mostra_carri():
         total = calcu_total()
 
         print("----------------------------------------")
-        print(f"Total a pagar: {total}")
+        print(f"Total a pagar: ${total}")
         break
 
 
@@ -278,7 +265,7 @@ def estadisticas():
 def menu():
     while True:
         print("----------------------------------------")
-        print("     ###### SUPERMERCADO ######/n")
+        print("     ###### SUPERMERCADO ######\n")
         print("       1. Registrar producto")
         print("       2. Mostrar productos")
         print("       3. Agregar al carrito")
