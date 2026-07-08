@@ -8,6 +8,9 @@ def limpiar():
 productos = []
 carrito = []
 total_recaudado = 0
+Ticket_Descuento_5 = 0.05
+Ticket_Descuento_10 = 0.10
+Ticket_Descuento_20 = 0.20
 
 
 def buscar(codigo):
@@ -17,29 +20,18 @@ def buscar(codigo):
     return None
 
 
-def validar(verificar=False):
+def pedir_codigo():
     while True:
         codigo = input("Ingrese el codigo: ")
-        print()
-
+        print("\n")
         if len(codigo) != 3 or not codigo.isdigit():
             print("El codigo debe tener exactamente 3 digitos\n")
             continue
 
         numero = int(codigo)
-
         if numero < 1 or numero > 100:
             print("El codigo debe estar entre 001 y 100\n")
             continue
-
-        if verificar:
-            if buscar(codigo) is None:
-                print("Ese codigo o producto no existe\n")
-                continue
-        else:
-            if buscar(codigo) is not None:
-                print("Ese codigo ya existe\n")
-                continue
 
         return codigo
 
@@ -74,7 +66,11 @@ def registrar():
         return
 
     print("\n------------- REGISTRAR PRODUCTO -------------")
-    codigo = validar()
+    codigo = pedir_codigo()
+    if buscar(codigo) is not None:
+            print("Ese codigo ya existe\n")
+            return
+    
     nombre = input("Nombre: ")
     precio = reg_precio()
     stock = reg_stock()
@@ -123,8 +119,11 @@ def cantidad_en_carrito(codigo):
 
 
 def agre_carri():
-    codigo = validar(True)
+    codigo = pedir_codigo()
     produc_encontrado = buscar(codigo)
+    if produc_encontrado is None:
+        print("El Producto no existe\n")
+        return
 
     while True:
         try:
@@ -153,10 +152,34 @@ def agre_carri():
         break
 
 
+def pedir_descuento():
+    while True:
+        print("\n¿Tiene un ticket de descuento?")
+        print("0. Sin descuento")
+        print("1. 5%")
+        print("2. 10%")
+        print("3. 20%")
+        opcion = input("\nSeleccione una opcion: ")
+
+        if opcion == "0":
+            return 0
+        elif opcion == "1":
+            return Ticket_Descuento_5
+        elif opcion == "2":
+            return Ticket_Descuento_10
+        elif opcion == "3":
+            return Ticket_Descuento_20
+        else:
+            print("Opcion invalida")
+            continue
+
+
 def calcu_total():
     total = 0
     for item in carrito:
         total += item['subtotal']
+
+    total = total - (total * (pedir_descuento()))
     return total
 
 
@@ -178,10 +201,7 @@ def mostra_carri():
                 item['subtotal']
             )
 
-        total = calcu_total()
-
         print("----------------------------------------")
-        print(f"Total a pagar: ${total}")
         break
 
 
@@ -191,13 +211,13 @@ def finalizar():
     if not carrito:
         print("Su carrito esta vacio\n")
         return None
+    total = calcu_total()
 
     print("------------------------------------------------\n")
     print("################################################")
     print("#                  TICKET                      #")
     print("################################################\n")
 
-    total = calcu_total()
 
     for item in carrito:
 
