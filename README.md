@@ -16,6 +16,8 @@ Comision: C(K1.3)
 
 Descripción general del sistema:  Este sistema simula una caja de supermercado, permitiendo registrar productos, agregarlos a un carrito de compras, calcular el costo total de cada venta y generar estadísticas, como el producto más vendido.
 
+Se utilizo en el codigo la inteligencia artificial Chat Gpt en el diseño y logica de la funcion "estadisticas".
+
 Instrucciones de ejecución: 
 
 0 Salir del programa
