@@ -5,7 +5,13 @@ def limpiar():
     os.system("cls")
 
 
-productos = []
+productos = [
+    {"codigo": "001", "nombre": "Leche", "precio": 1200.0, "stock": 15, "vendidos": 0, "recaudado": 0},
+    {"codigo": "002", "nombre": "Pan", "precio": 800.0, "stock": 20, "vendidos": 0, "recaudado": 0},
+    {"codigo": "003", "nombre": "Arroz", "precio": 1500.0, "stock": 12, "vendidos": 0, "recaudado": 0},
+    {"codigo": "004", "nombre": "Azúcar", "precio": 950.0, "stock": 18, "vendidos": 0, "recaudado": 0},
+    {"codigo": "005", "nombre": "Café", "precio": 1800.0, "stock": 10, "vendidos": 0, "recaudado": 0},
+]
 carrito = []
 total_recaudado = 0
 Ticket_Descuento_5 = 0.05
